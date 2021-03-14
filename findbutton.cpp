@@ -43,7 +43,7 @@ int main (int argc, char* argv[])
  *
  */
 
-//#define __DEBUG__
+#define __DEBUG__
 
 int findButton(const string& fileName)
 {
@@ -119,7 +119,10 @@ int findButton(const string& fileName)
 #ifdef __DEBUG__
                         if ( gResult[ch] < (x-j+1)*(y-i+1) && ((x-j) != (y-i))) { gResult[ch] =  (x-j+1)*(y-i+1); }
 #endif
-                        if ( maxVal < (x-j+1)*(y-i+1) && ((x-j) != (y-i)) ) maxVal = (x-j+1)*(y-i+1);
+                        if ( maxVal < (x-j+1)*(y-i+1) && ((x-j) != (y-i)) ) {
+							maxVal = (x-j+1)*(y-i+1);
+							break;
+						}
                     }
                     x = yVec[i].rfind(yVec[i].at(j),x-1);
                     if( j == x ) break;
@@ -137,7 +140,10 @@ int findButton(const string& fileName)
 #ifdef __DEBUG__
                         if ( gResult[ch] < (x-j+1)*(y-i+1) && ((x-j) != (y-i))) gResult[ch] =  (x-j+1)*(y-i+1);
 #endif
-                        if ( maxVal < (x-j+1)*(y-i+1) && ((x-j) != (y-i)) )     maxVal = (x-j+1)*(y-i+1);
+                        if ( maxVal < (x-j+1)*(y-i+1) && ((x-j) != (y-i)) ) { 
+							maxVal = (x-j+1)*(y-i+1);
+							break;
+						}
                     }
                     y = xVec[j].rfind(yVec[i].at(j),y-1);
                     if( i == y ) break;
